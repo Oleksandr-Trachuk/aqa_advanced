@@ -6,11 +6,11 @@ class Api {
   }
 
   static getTodo() {
-    return Api.getJson("https://jsonplaceholder.typicode.com/todos/1", "Todo");
+    return Api.getJson('https://jsonplaceholder.typicode.com/todos/1', 'Todo');
   }
 
   static getUser() {
-    return Api.getJson("https://jsonplaceholder.typicode.com/users/1", "User");
+    return Api.getJson('https://jsonplaceholder.typicode.com/users/1', 'User');
   }
 }
 
@@ -21,28 +21,28 @@ class Runner {
 
     Promise.all([t, u])
       .then(([todo, user]) => {
-        console.log("Runner all (then):", { todo, user });
+        console.log('Runner all (then):', { todo, user });
       })
-      .catch(err => console.error("Runner all error:", err.message));
+      .catch((err) => console.error('Runner all error:', err.message));
 
     Promise.race([t, u])
-      .then(first => console.log("Runner race (then):", first))
-      .catch(err => console.error("Runner race error:", err.message));
+      .then((first) => console.log('Runner race (then):', first))
+      .catch((err) => console.error('Runner race error:', err.message));
   }
 
   static async withAsyncAwait() {
     try {
       const [todo, user] = await Promise.all([Api.getTodo(), Api.getUser()]);
-      console.log("Runner all (await):", { todo, user });
+      console.log('Runner all (await):', { todo, user });
     } catch (e) {
-      console.error("Runner all (await) error:", e.message);
+      console.error('Runner all (await) error:', e.message);
     }
 
     try {
       const first = await Promise.race([Api.getTodo(), Api.getUser()]);
-      console.log("Runner race (await):", first);
+      console.log('Runner race (await):', first);
     } catch (e) {
-      console.error("Runner race (await) error:", e.message);
+      console.error('Runner race (await) error:', e.message);
     }
   }
 }

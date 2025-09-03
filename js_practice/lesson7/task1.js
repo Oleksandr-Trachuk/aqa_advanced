@@ -1,9 +1,9 @@
 function handleEven() {
-  console.log("number is even");
+  console.log('number is even');
 }
 
 function handleOdd() {
-  console.log("number is odd");
+  console.log('number is odd');
 }
 
 function handleNum(number, onEven, onOdd) {
@@ -16,3 +16,6 @@ function handleNum(number, onEven, onOdd) {
 
 // Example usage:
 handleNum(7, handleEven, handleOdd);
+
+console.log('husky test');
+console.log('ще один рядок');

@@ -1,7 +1,7 @@
 const book = {
-  title: "Чистий код",
-  author: "Роберт Мартін",
-  year: "OwnerName"
+  title: 'Чистий код',
+  author: 'Роберт Мартін',
+  year: 'OwnerName',
 };
 
 const { title, author } = book;

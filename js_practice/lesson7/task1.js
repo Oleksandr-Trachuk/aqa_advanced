@@ -16,3 +16,6 @@ function handleNum(number, onEven, onOdd) {
 
 // Example usage:
 handleNum(7, handleEven, handleOdd);
+
+console.log('husky test');
+console.log('ще один рядок');

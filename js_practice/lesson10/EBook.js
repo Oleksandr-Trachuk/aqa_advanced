@@ -1,4 +1,3 @@
-
 const Book = require('./Book');
 
 class EBook extends Book {
@@ -7,7 +6,9 @@ class EBook extends Book {
     this.fileFormat = fileFormat;
   }
 
-  get fileFormat() { return this._fileFormat; }
+  get fileFormat() {
+    return this._fileFormat;
+  }
   set fileFormat(v) {
     if (typeof v !== 'string' || !v.trim()) {
       throw new Error('fileFormat must be a non-empty string');

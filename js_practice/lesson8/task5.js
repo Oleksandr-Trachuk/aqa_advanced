@@ -6,4 +6,4 @@ const merged = [...firstArray, ...secondArray];
 
 // або: const merged = firstArray.concat(secondArray);
 
-console.log("Об’єднаний:", merged);
+console.log('Об’єднаний:', merged);

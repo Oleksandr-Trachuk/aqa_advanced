@@ -4,17 +4,20 @@ const prettier = require('eslint-plugin-prettier');
 const globals = require('globals');
 
 module.exports = [
+  // Ігнор (замість .eslintignore)
   {
     ignores: ['**/node_modules/**', 'dist/**', 'coverage/**', '.husky/**'],
   },
+
+  // Загальні правила для всіх *.js (Node + fetch)
   {
     files: ['**/*.js'],
     languageOptions: {
       ecmaVersion: 'latest',
-      sourceType: 'script', // CommonJS
+      sourceType: 'script', // CommonJS; для ESM можна зробити окремий блок із 'module'
       globals: {
-        ...globals.node,
-        fetch: true,
+        ...globals.node, // console, require, module, setTimeout, process, __dirname, ...
+        fetch: true, // Node 18+ має глобальний fetch
       },
     },
     plugins: { prettier },
@@ -24,6 +27,21 @@ module.exports = [
       'no-undef': 'error',
       'prefer-const': 'warn',
       'prettier/prettier': 'error',
+    },
+  },
+
+  // ОКРЕМИЙ БЛОК ДЛЯ ТЕСТІВ (Jest)
+  {
+    files: ['**/*.test.js', '**/__tests__/**/*.js'],
+    languageOptions: {
+      // додаємо jest-глобалі: describe, test, expect, jest, beforeEach, afterEach, ...
+      globals: {
+        ...globals.jest,
+      },
+    },
+    rules: {
+      // приклад: дозволити console в тестах
+      'no-console': 'off',
     },
   },
 ];
